@@ -1,0 +1,341 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+
+  @include respond-max($phone) {
+    font-size: 50%;
+  }
+}
+
+body {
+  overflow: hidden;
+  font-family: $arial-font-stack;
+}
+
+button {
+  &,
+  &:focus {
+    outline: none;
+  }
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+}
+
+.bg-image {
+  background-size: cover;
+  height: 100vh;
+  flex: 1;
+  background-position: center;
+}
+
+.form {
+  background: linear-gradient(180deg, #ffffff 0%, #f2f5fa 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+
+  @include respond-max($phone) {
+    position: absolute;
+    width: 90%;
+    height: 40rem;
+    align-self: center;
+    margin-left: 5%;
+  }
+
+  .error_message {
+    color: red;
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+
+  .header {
+    display: flex;
+    width: 80%;
+    height: 4rem;
+    align-items: center;
+
+    @include respond-max($phone) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #fff;
+      padding: 0 3rem;
+      height: 6rem;
+    }
+
+    .logo {
+      width: 2.5rem;
+      height: 4rem;
+      margin-right: 1rem;
+
+      &__text {
+        margin-right: auto;
+      }
+    }
+
+    &__link {
+      color: gray;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: 400;
+      line-height: 2.6rem;
+      transition: all 0.3s;
+
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        color: #4066a5;
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: #233759;
+      }
+    }
+  }
+
+  &__content {
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .success__icon {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+  }
+
+  .main__heading {
+    font-family: $georgia-font-stack;
+    font-size: 3.2rem;
+    line-height: 4.4rem;
+    font-weight: 400;
+    width: 32rem;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+
+    @include respond-max($phone) {
+      margin-left: 0;
+    }
+  }
+
+  .slogan {
+    width: 32rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+    color: #6a707b;
+    margin-left: 2rem;
+
+    @include respond-max($phone) {
+      margin-left: 0;
+    }
+  }
+
+  .email {
+    display: flex;
+    background-color: #fff;
+    margin: 3rem 0;
+    transition: all 0.4s;
+
+    &:focus-within {
+      box-shadow: 0px 30px 40px rgba(19, 24, 33, 0.06);
+    }
+
+    &:hover .email__icon,
+    &:hover .email__input {
+      border-color: #4066a5;
+      box-shadow: 0px 30px 40px rgba(19, 24, 33, 0.06);
+    }
+
+    &:hover .email__icon {
+      fill: #4066a5;
+    }
+
+    &__icon {
+      border: 1px solid #e3e3e4;
+      border-left: none;
+      position: absolute;
+      padding: 1.5rem 0 1.5rem 4rem;
+      width: 10rem;
+      height: 5rem;
+      left: 36rem;
+      background-color: #fff;
+      fill: #131821;
+      transition: all 0.4s;
+
+      @include respond-max($phone) {
+        position: relative;
+        left: 0;
+      }
+    }
+    &__input {
+      width: 36.5rem;
+      padding: 0 2rem;
+      height: 5rem;
+      background: #ffffff;
+      border: 1px solid #e3e3e4;
+      border-right: none;
+      border-left: 3px solid #4066a5;
+      transition: all 0.4s;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 2.4rem;
+      font-weight: 400;
+
+      ::placeholder {
+        color: #6a707b;
+      }
+
+      @include respond-max($phone) {
+        width: 100%;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .checkbox {
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+    color: #6a707b;
+
+    #terms-checkbox {
+      display: none;
+    }
+
+    #terms-checkbox:checked ~ .checkbox__label .checkbox__container {
+      background-color: #4066a5;
+    }
+
+    &__container {
+      background-color: #fff;
+      height: 2rem;
+      width: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      border: 1px solid #e3e3e4;
+    }
+
+    &__icon {
+      height: 1rem;
+      width: 1rem;
+      fill: #fff;
+    }
+
+    &__label {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .label__text {
+      display: inline-block;
+      margin-left: 1rem;
+    }
+
+    input {
+      margin-right: 2rem;
+    }
+
+    a {
+      color: black;
+    }
+  }
+
+  .line {
+    background-color: #e3e3e4;
+    height: 1px;
+    width: 80%;
+  }
+
+  .social__icons {
+    display: flex;
+  }
+
+  .social_icon {
+    padding: 1rem;
+    border: 2px solid #e3e3e4;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 4rem;
+    transition: all 0.3s;
+    fill: #131821;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+
+    &:hover {
+      box-shadow: 0px 20px 40px rgba(19, 24, 33, 0.3);
+      cursor: pointer;
+      fill: white;
+    }
+
+    &:active {
+      transform: translateY(3px);
+      fill: white;
+    }
+
+    &:nth-child(1) {
+      &:hover {
+        background-color: #4267b2;
+      }
+      &:active {
+        background-color: #2f4a80;
+      }
+    }
+    &:nth-child(2) {
+      &:hover {
+        background-color: #c13584;
+      }
+      &:active {
+        background-color: #8f2762;
+      }
+    }
+    &:nth-child(3) {
+      &:hover {
+        background-color: #1da1f2;
+      }
+      &:active {
+        background-color: #177fbf;
+      }
+    }
+    &:nth-child(4) {
+      &:hover {
+        background-color: #ff0000;
+      }
+      &:active {
+        background-color: #cc0000;
+      }
+    }
+  }
+}
